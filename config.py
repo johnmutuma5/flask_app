@@ -5,6 +5,8 @@ class Config():
     TESTING = True
     APP_SECRET = os.getenv('APP_SECRET')
     ENV = os.getenv('ENVIRONMENT')
+    DEFAULT_ADMIN_USERNAME = os.getenv('DEFAULT_ADMIN_USERNAME')
+    DEFAULT_ADMIN_PASS = os.getenv('DEFAULT_ADMIN_PASS')
 
 class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL_DEV')

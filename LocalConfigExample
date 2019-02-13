@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+export APP_SECRET=secret
+export DEFAULT_ADMIN_USERNAME=admin
+export DEFAULT_ADMIN_PASS=admin_pass
+export DATABASE_URL_DEV=postgresql://postgres:@localhost:5432/products_assessment_dev
+export DATABASE_URL_TEST=postgresql://postgres:@localhost:5432/products_assessment_test

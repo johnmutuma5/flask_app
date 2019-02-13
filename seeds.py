@@ -1,9 +1,13 @@
 from app.store import store
 from app.user.models import User
+from app import app
+
+DEFAULT_ADMIN_USERNAME = app.config['DEFAULT_ADMIN_USERNAME']
+DEFAULT_ADMIN_PASS = app.config['DEFAULT_ADMIN_PASS']
 
 default_admin = {
-    'username': 'admin',
-    'password': 'admin_pass',
+    'username': DEFAULT_ADMIN_USERNAME,
+    'password': DEFAULT_ADMIN_PASS,
     'role': 'admin'
 }
 
@@ -17,7 +21,7 @@ def add_default_admin ():
     try:
         store.add_user(user)
     except Exception as e:
-        print('User already created') 
+        print('User already created')
 
 create_all()
 add_default_admin()

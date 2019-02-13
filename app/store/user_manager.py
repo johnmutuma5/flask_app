@@ -1,5 +1,6 @@
 from ..user.models import User
 from ..shared.utils import hash_password
+from ..shared.exceptions import AuthenticationError
 
 class UserManager ():
     def __init__(self, Session):

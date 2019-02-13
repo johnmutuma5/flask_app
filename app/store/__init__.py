@@ -4,7 +4,6 @@ from .base import Base
 from .product_manager import ProductManager
 from .user_manager import UserManager
 from .. import app
-from ..shared.exceptions import AuthenticationError
 
 SQLALCHEMY_DATABASE_URI = app.config['SQLALCHEMY_DATABASE_URI']
 
