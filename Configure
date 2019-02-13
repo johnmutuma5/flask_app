@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+export ENVIRONMENT=development
+
+make venv
+source ./venv/bin/activate
+source ./LocalConfig
+make install
+make freeze
+make tables
