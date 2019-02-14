@@ -30,6 +30,7 @@ class UserController:
     @staticmethod
     def authenticate ():
         login_credentials = json.loads(request.data)
+        # get the user
         try:
             user = store.find_user(login_credentials)
         except AuthenticationError as e:
