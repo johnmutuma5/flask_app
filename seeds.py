@@ -1,4 +1,4 @@
-from app.store import store
+from app.store.store import store
 from app.user.models import User
 from app import app
 

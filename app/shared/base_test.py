@@ -2,7 +2,7 @@ import json
 import unittest
 from app import app
 from ..user.models import User
-from ..store import store
+from ..store.store import store
 
 class BaseAPITestSetUp (unittest.TestCase):
     def setUp(self):

@@ -1,6 +1,6 @@
 from sqlalchemy import (Column, Integer, Sequence, String)
 from sqlalchemy.ext.hybrid import hybrid_property
-from ..store.base import Base
+from ..store import Base
 from ..shared.utils import hash_password
 
 class User(Base):

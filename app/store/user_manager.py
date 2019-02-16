@@ -1,3 +1,4 @@
+from .store_helper import StoreHelper
 from ..user.models import User
 from ..shared.utils import hash_password
 from ..shared.exceptions import AuthenticationError
@@ -5,19 +6,10 @@ from ..shared.exceptions import AuthenticationError
 class UserManager ():
     def __init__(self, Session):
         self.Session = Session
+        self.storeHelper = StoreHelper(Session)
 
     def add_user(self, user):
-        session = self.Session()
-        try:
-            session.add(user)
-            session.commit()
-            session.refresh(user)
-        except Exception as e:
-            session.rollback()
-            raise e
-        finally:
-            session.close()
-        return user
+        return self.storeHelper.add_item(user)
 
     def find_user(self, credentials):
         username = credentials['username']

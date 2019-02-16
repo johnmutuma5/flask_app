@@ -4,4 +4,7 @@ class CustomException(Exception):
 
 
 class AuthenticationError(CustomException):
-    pass
+    ...
+
+class DuplicationError (CustomException):
+    ...

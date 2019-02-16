@@ -1,21 +1,13 @@
+from .store_helper import StoreHelper
 from ..product.models import Product
 
 class ProductManager ():
     def __init__(self, Session):
         self.Session = Session
+        self.storeHelper = StoreHelper(Session)
 
     def add_product(self, product):
-        session = self.Session()
-        try:
-            session.add(product)
-            session.commit()
-            session.refresh(product)
-        except Exception as e:
-            session.rollback()
-            raise e
-        finally:
-            session.close()
-        return product
+        return self.storeHelper.add_item(product)
 
     def get_all_products(self):
         session = self.Session()

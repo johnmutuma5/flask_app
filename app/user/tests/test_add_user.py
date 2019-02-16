@@ -1,6 +1,6 @@
 import json
 import unittest
-from app.store import store
+from app.store.store import store
 from app.user.models import User
 from . import UserTestCase
 
