@@ -22,7 +22,7 @@ class AddUserTestCase(UserTestCase):
 
     def test_it_prevents_regular_user_from_adding_other_users(self):
         user_data = { 'username': 'john_doe4', 'password': 'test_pass', 'role': 'regular'}
-        store.add_user(User(user_data))
+        store.add(User(user_data))
         token = self.helper.authenticate(user_data)
         resp = self.helper.add_user(new_user_data, token)
         resp_data = json.loads(resp.data.decode())

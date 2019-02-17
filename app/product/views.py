@@ -1,9 +1,9 @@
 import json
 from flask import jsonify, request
-from ..store.store import store
 from ..shared.middleware import admin_only, require_token
-from ..shared.exceptions import DuplicationError
+from ..shared.handlers import add_to_store
 from ..product.models import Product
+from ..store.store import store
 
 class ProductController:
 
@@ -12,12 +12,7 @@ class ProductController:
     @admin_only
     def add_product ():
         product = Product(json.loads(request.data))
-        # add product to the database
-        try:
-            new_product = store.add_product(product)
-        except DuplicationError as e:
-            return jsonify({ 'ok': False, 'message': e.message }), 409
-        return jsonify({ 'ok': True, 'product': new_product.serialize() }), 201
+        return add_to_store(product)
 
     def view_products ():
         available_products = store.get_all_products()

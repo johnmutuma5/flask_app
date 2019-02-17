@@ -19,7 +19,7 @@ def add_default_admin ():
     print('Adding the default admin')
     user = User(default_admin)
     try:
-        store.add_user(user)
+        store.add(user)
     except Exception as e:
         print('User already created')
 

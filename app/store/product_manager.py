@@ -4,10 +4,10 @@ from ..product.models import Product
 class ProductManager ():
     def __init__(self, Session):
         self.Session = Session
-        self.storeHelper = StoreHelper(Session)
+        self.storeHelper = StoreHelper(Session, 'Product')
 
-    def add_product(self, product):
-        return self.storeHelper.add_item(product)
+    def add(self, product):
+        return self.storeHelper.add(product)
 
     def get_all_products(self):
         session = self.Session()

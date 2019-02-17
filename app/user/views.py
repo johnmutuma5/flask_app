@@ -9,6 +9,7 @@ from .. import app
 from ..store.store import store
 from ..shared.middleware import admin_only, require_token
 from ..shared.exceptions import AuthenticationError, DuplicationError
+from ..shared.handlers import add_to_store
 
 APP_SECRET = app.config['APP_SECRET']
 
@@ -19,12 +20,7 @@ class UserController:
     @admin_only
     def add_user ():
         user = User(json.loads(request.data))
-        # add user to the database
-        try:
-            new_user = store.add_user(user)
-        except DuplicationError as e:
-            return jsonify({ 'ok': False, 'message': e.message }), 409
-        return jsonify({ 'ok': True, 'user': new_user.serialize() }), 201
+        return add_to_store(user)
 
     @staticmethod
     def authenticate ():

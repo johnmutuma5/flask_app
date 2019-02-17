@@ -21,7 +21,7 @@ class AddProductTestCase(ProductTestCase):
 
     def test_non_admin_users_do_not_add_products(self):
         user_data = { 'username': 'john_doe4', 'password': 'test_pass', 'role': 'regular'}
-        store.add_user(User(user_data))
+        store.add(User(user_data))
         token = self.helper.authenticate(user_data)
         resp = self.helper.add_product(new_product_data, token)
         resp_data = json.loads(resp.data.decode())

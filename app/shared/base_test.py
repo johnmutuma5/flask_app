@@ -14,7 +14,7 @@ class BaseAPITestSetUp (unittest.TestCase):
             'role': 'admin'
         }
         user = User(default_admin)
-        store.add_user(user)
+        store.add(user)
 
     def tearDown(self):
         store.drop_db()

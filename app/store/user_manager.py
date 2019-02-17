@@ -6,10 +6,10 @@ from ..shared.exceptions import AuthenticationError
 class UserManager ():
     def __init__(self, Session):
         self.Session = Session
-        self.storeHelper = StoreHelper(Session)
+        self.storeHelper = StoreHelper(Session, 'User')
 
-    def add_user(self, user):
-        return self.storeHelper.add_item(user)
+    def add(self, user):
+        return self.storeHelper.add(user)
 
     def find_user(self, credentials):
         username = credentials['username']

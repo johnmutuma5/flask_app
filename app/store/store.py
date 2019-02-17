@@ -14,23 +14,29 @@ class Store ():
         self.userManager = UserManager(self.Session)
         self.productManager = ProductManager(self.Session)
 
+
+    def add(self, item):
+        section_manager = self.resolve_section_manager(item)
+        return section_manager.add(item)
+
+
+    def find_user(self, credentials):
+        return self.userManager.find_user(credentials)
+
+    def get_all_products(self):
+        return self.productManager.get_all_products()
+
+    def resolve_section_manager (self, item):
+        item_class = item.__class__.__name__
+        return {
+            'User': self.userManager,
+            'Product': self.productManager
+        }[item_class]
+
     def init_db (self):
         Base.metadata.create_all(bind=self.dbEngine)
 
     def drop_db (self):
         Base.metadata.drop_all(bind=self.dbEngine)
-
-    def add_user(self, user_data):
-        return self.userManager.add_user(user_data)
-
-    def find_user(self, credentials):
-        return self.userManager.find_user(credentials)
-
-    def add_product(self, product_data):
-        return self.productManager.add_product(product_data)
-
-    def get_all_products(self):
-        return self.productManager.get_all_products()
-
 
 store = Store()
